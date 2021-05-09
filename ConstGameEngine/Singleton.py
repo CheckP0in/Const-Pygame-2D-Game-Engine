@@ -1,3 +1,4 @@
+# -- Used for creating a singleton class -- #
 class Singleton:
     """
     A non-thread-safe helper class to ease implementing singletons.

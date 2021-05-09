@@ -4,8 +4,9 @@ from ConstGameEngine.Singleton import Singleton
 pygame.init()
 
 
-@Singleton
-class Window:
+@Singleton  # -- Sets the class to be a singleton -- #
+class Window:  # -- Create the class -- #
+    # -- Constructor -- #
     def __init__(self):
         self.__size = None
         self.__width = int()
@@ -14,6 +15,7 @@ class Window:
         self.__icon = None
         self.__window = None
 
+    # -- Below methods are all getters and setters -- #
     def set_size(self, size: tuple[int]):
         self.__size = size
         self.__width = size[0]
@@ -43,6 +45,7 @@ class Window:
     def get_window(self):
         return self.__window
 
+    # -- Initialize the window -- #
     def init(self):
         self.__window = pygame.display.set_mode(self.__size)
 
