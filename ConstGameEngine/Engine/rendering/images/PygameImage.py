@@ -22,3 +22,13 @@ class PygameImage:
     # -- Draw the image -- #
     def draw(self, window: pygame.Surface):
         window.blit(self.image, (self.x, self.y, self.width, self.height))
+
+    # -- Rotate an image -- #
+    @staticmethod
+    def rotate_image(surface, angle):
+        return pygame.transform.rotate(surface, angle)
+
+    # -- Scale an image -- #
+    @staticmethod
+    def scale_image(surface, width, height):
+        return pygame.transform.scale(surface, (width, height))
