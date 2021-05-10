@@ -1,8 +1,9 @@
+# -- Import dependencies -- #
 from enum import Enum
-
 import cv2
 
 
+# -- Create class -- #
 class CvImageModes(Enum):
     COLOUR = cv2.IMREAD_COLOR  # RGB values without alpha values
     GRAYSCALE = cv2.IMREAD_GRAYSCALE  # Grayscale image without alpha values
