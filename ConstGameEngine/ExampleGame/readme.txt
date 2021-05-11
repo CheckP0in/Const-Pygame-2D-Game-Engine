@@ -1,5 +1,5 @@
 All images taken from: https://www.flaticon.com/?k=1620485528989
 Made by: Joseph Brewer (JCB Games)
-v0.12
+v0.13
 patch notes:
-Added 'Vector1D' class.
+Added 'Vector2D' class.
