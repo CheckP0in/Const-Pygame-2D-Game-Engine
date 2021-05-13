@@ -34,3 +34,42 @@ class Image:
 
         else:
             cv2.imwrite(final_dir, img)
+
+    # -- Gets the shape of the image as a list. [columns, rows, channels] -- #
+    @staticmethod
+    def get_image_shape(image) -> tuple:
+        return image.shape
+
+    # -- Changes a pixel to a new colour -- #
+    @staticmethod
+    def change_pixel(image, pixel_col: int, pixel_row: int, colour: tuple[int, int, int]):
+        image[pixel_col][pixel_row] = list(colour)
+
+    # -- changes a group of pixels to a new colour -- #
+    @staticmethod
+    def change_pixel_group(image, colour: tuple[int, int, int], rowI=0, colI=0, row_slice=None, col_slice=None):
+        if row_slice is None and col_slice is None:
+            for i in range(rowI):
+                for j in range(colI):
+                    image[i][j] = list(colour)
+
+        elif row_slice is not None and col_slice is None:
+            for row in range(image[row_slice[0]:row_slice[1]]):
+                for j in range(image.shape[1]):
+                    image[row][j] = list(colour)
+
+        elif row_slice is None and col_slice is not None:
+            for i in range(image.shape[0]):
+                for col in range(image[i][col_slice[0]:col_slice[1]]):
+                    image[i][col] = list(colour)
+
+        else:
+            for col in range(image[col_slice[0]:col_slice[1]]):
+                for row in range(image[col][row_slice[0]:row_slice[1]]):
+                    image[col][row] = list(colour)
+
+    # -- copies a slice of the image and pastes it to a new location -- #
+    @staticmethod
+    def copy_paste_image_section(image, start_col, end_col, size):
+        tag = image[start_col:start_col + size]
+        image[end_col:end_col + size] = tag
