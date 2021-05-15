@@ -1,6 +1,5 @@
 # -- Import dependencies -- #
 import pygame
-from ConstGameEngine.Engine.rendering.images.PygameImage import PygameImage
 
 
 # -- Create class
@@ -24,3 +23,8 @@ class PygameText:
     @staticmethod
     def render_font(text, font, colour, antialias=True):
         return font.render(text, antialias=antialias, colour=colour)
+
+    # -- Renders text to the screen -- #
+    @staticmethod
+    def draw_text(surface, rendered_font, x, y):
+        surface.blit(rendered_font, (x, y))
