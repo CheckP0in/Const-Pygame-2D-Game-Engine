@@ -16,12 +16,12 @@ class Window:  # -- Create the class -- #
         self.__window = None
 
     # -- Below methods are all getters and setters -- #
-    def set_size(self, size: tuple[int]):
+    def set_size(self, size: tuple[int, int]):
         self.__size = size
         self.__width = size[0]
         self.__height = size[1]
 
-    def get_size(self) -> tuple[int]:
+    def get_size(self) -> tuple[int, int]:
         return self.__size
 
     def get_width(self) -> int:

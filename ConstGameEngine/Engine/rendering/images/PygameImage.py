@@ -1,34 +1,9 @@
 # -- import dependencies -- #
-import os
-import pygame
+from ConstGameEngine.Engine.rendering.images.BaseImage import BaseImage
 
 
 # -- Create class
-class PygameImage:
+class PygameImage(BaseImage):
     # -- Constructor -- #
     def __init__(self, x, y, width, height, path):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.path = path
-        self.image = None
-
-    # -- Initialize the image -- #
-    def init(self):
-        parsed_path: list = self.path.split('/')
-        self.image = pygame.image.load(os.path.join(parsed_path[0], '/'.join(parsed_path[1:])))
-
-    # -- Draw the image -- #
-    def draw(self, window: pygame.Surface):
-        window.blit(self.image, (self.x, self.y, self.width, self.height))
-
-    # -- Rotate an image -- #
-    @staticmethod
-    def rotate_image(surface, angle):
-        return pygame.transform.rotate(surface, angle)
-
-    # -- Scale an image -- #
-    @staticmethod
-    def scale_image(surface, width, height):
-        return pygame.transform.scale(surface, (width, height))
+        super().__init__(width, height, path, x=x, y=y)
