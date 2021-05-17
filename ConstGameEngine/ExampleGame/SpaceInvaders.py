@@ -1,6 +1,8 @@
 import pygame
 from ConstGameEngine.Engine.rendering.images.Icon import Icon
 from ConstGameEngine.Engine.Window import Window
+from ConstGameEngine.Engine.data_management.BatchProcessing import BatchProcessing
+from ConstGameEngine.ExampleGame.Background import Background
 
 
 class SpaceInvaders:
@@ -12,6 +14,10 @@ class SpaceInvaders:
         self.icon_path = 'Assets/icon.png'
         self.icon = self.get_icon()
         self.window = self.create_window()
+        self.background_image = Background(self.window_width, self.window_height, 'Assets/background.jpg')
+        self.background_image.init()
+        self.render_background_process = BatchProcessing.obtain_process(self.background_image.draw, (self.window,))
+        self.to_render_background = True
 
     def create_window(self):
         instance = Window.instance()
@@ -35,6 +41,10 @@ class SpaceInvaders:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+
+            if self.to_render_background:
+                self.render_background_process()
+                self.to_render_background = False
 
             pygame.display.update()
 
