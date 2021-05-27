@@ -1,10 +1,13 @@
+import numpy as np
+
+
 class EntityManager:
     def __init__(self, entities=None):
         if entities is None:
-            self.entities = list()
+            self.entities = np.array([], dtype=object)
 
         else:
-            self.entities = entities
+            self.entities = np.array(entities, dtype=object)
 
     def get_entities(self):
         return self.entities
@@ -16,14 +19,14 @@ class EntityManager:
         return ent in self.entities
 
     def remove_entity(self, entity):
-        self.entities.remove(entity)
+        np.remove(self.entities, entity)
 
     def silent_remove_entity(self, entity):
         if entity in self.entities:
-            self.entities.remove(entity)
+            np.remove(self.entities, entity)
 
     def add_entity(self, entity):
-        self.entities.append(entity)
+        np.append(self.entities, entity)
 
     def insert_entity(self, ind, entity):
-        self.entities.insert(ind, entity)
+        np.insert(self.entities, ind, entity)

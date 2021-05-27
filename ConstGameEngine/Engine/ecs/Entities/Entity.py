@@ -1,11 +1,12 @@
 from threading import Thread
 from multiprocessing import Process
+import numpy as np
 
 
 class Entity:
     def __init__(self):
         self.component = None
-        self.systems = list()
+        self.systems = np.array([], dtype=object)
 
     def set_component(self, component):
         self.component = component
@@ -20,17 +21,17 @@ class Entity:
         return self.systems
 
     def add_system(self, system):
-        self.systems.append(system)
+        np.append(self.systems, system)
 
     def insert_system(self, ind, system):
-        self.systems.insert(ind, system)
+        np.insert(self.systems, ind, system)
 
     def remove_system(self, system):
-        self.systems.remove(system)
+        np.remove(self.systems, system)
 
     def silent_remove_system(self, system):
         if system in self.systems:
-            self.systems.remove(system)
+            np.remove(self.systems, system)
 
     def run(self):
         for system in self.systems:
