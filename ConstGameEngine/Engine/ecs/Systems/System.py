@@ -1,7 +1,10 @@
+import numpy as np
+
+
 class System:
     def __init__(self, systems=None):
         if systems is None:
-            self.systems = []
+            self.systems = np.array([], dtype=object)
 
         else:
             self.systems = systems

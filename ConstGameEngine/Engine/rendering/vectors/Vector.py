@@ -1,24 +1,27 @@
+import numpy as np
+
+
 # -- Create class -- #
 class Vector1D:
     # -- Constructor -- #
     def __init__(self, x):
         self.__x = x
-        self.__vector = list()
+        self.__vector = np.array([], dtype=np.float)
 
     # -- Initialize the vector -- #
     def init(self):
-        self.__vector.append(self.__x)
+        self.__vector = np.append(self.__vector, self.__x)
 
     # -- return the vector -- #
-    def get_vector(self) -> list:
+    def get_vector(self) -> np.array:
         return self.__vector
 
     # -- set the vector to a new value -- #
-    def set_vector(self, v: list):
+    def set_vector(self, v: np.array):
         self.__vector = v
 
     # -- get the 'x' axis of the vector -- #
-    def get_x(self) -> int:
+    def get_x(self) -> float:
         return self.__x
 
     # -- set the 'x' axis to a new value -- #
@@ -32,23 +35,23 @@ class Vector2D:
     def __init__(self, x, y):
         self.__x = x
         self.__y = y
-        self.__vector = list()
+        self.__vector = np.array([], dtype=np.float)
 
     # -- Initialize the vector -- #
     def init(self):
-        self.__vector.append(self.__x)
-        self.__vector.append(self.__y)
+        self.__vector = np.append(self.__vector, self.__x)
+        self.__vector = np.append(self.__vector, self.__y)
 
     # -- return the vector -- #
-    def get_vector(self) -> list:
+    def get_vector(self) -> np.array:
         return self.__vector
 
     # -- set the vector to a new value -- #
-    def set_vector(self, v: list):
+    def set_vector(self, v: np.array):
         self.__vector = v
 
     # -- get the 'x' axis of the vector -- #
-    def get_x(self) -> int:
+    def get_x(self) -> float:
         return self.__x
 
     # -- set the 'x' axis to a new value -- #
@@ -56,7 +59,7 @@ class Vector2D:
         self.__x = x
 
     # -- get the 'y' axis of the vector -- #
-    def get_y(self) -> int:
+    def get_y(self) -> float:
         return self.__y
 
     # -- set the 'y' axis to a new value -- #
